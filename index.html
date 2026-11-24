@@ -1,159 +1,791 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matteo Cederle</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <style>
-    body {
-    font-family: "Marvel", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 22px;
-    }
-    header {
-      background: #fff;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      font-size: 2rem;
-      font-weight: bold;
-    }
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    nav a:hover {
-      color: #4f46e5;
-    }
-    section.hero {
-      background: linear-gradient(to right, #39568c, #73d055);
-      color: white;
-      text-align: center;
-      padding: 4rem 1rem;
-    }
-    section.hero h2 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-    main {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    section {
-      background: white;
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    section h2 {
-      margin-top: 0;
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    footer {
-      background: #f3f4f6;
-      text-align: center;
-      padding: 1rem;
-      color: #555;
-    }
-    .blog-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      transition: box-shadow 0.2s;
-    }
-    .blog-card:hover {
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-  </style>
+  <title>Matteo Cederle · PhD candidate, University of Padova</title>
+  <meta name="description" content="Matteo Cederle is a PhD candidate at the University of Padova working on reinforcement learning, multi-agent systems and fairness for sustainable mobility." />
+  <meta name="author" content="Matteo Cederle" />
+  <link rel="canonical" href="https://mcederle99.github.io/matteo-cederle/" />
+
+  <!-- Social previews -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Matteo Cederle" />
+  <meta property="og:description" content="PhD candidate at the University of Padova · Reinforcement learning for sustainable mobility." />
+  <meta property="og:url" content="https://mcederle99.github.io/matteo-cederle/" />
+  <meta property="og:image" content="https://mcederle99.github.io/matteo-cederle/assets/img/profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#0b1020" />
+
+  <!-- Apply the saved theme before first paint to avoid a flash -->
+  <script>
+    (function () {
+      var root = document.documentElement, t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light") t = "dark"; // night mode is the default
+      root.setAttribute("data-theme", t);
+      root.classList.add("js");
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/main.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Matteo Cederle",
+    "jobTitle": "PhD candidate",
+    "url": "https://mcederle99.github.io/matteo-cederle/",
+    "email": "mailto:matteo.cederle@phd.unipd.it",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Padova" },
+    "knowsAbout": ["Reinforcement Learning", "Multi-Agent Reinforcement Learning", "Fairness", "Sustainable Mobility", "Control Systems"],
+    "sameAs": [
+      "https://scholar.google.com/citations?user=JvR-g-cAAAAJ",
+      "https://github.com/mcederle99",
+      "https://www.linkedin.com/in/matteo-cederle",
+      "https://orcid.org/0009-0000-3783-9588"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <header>
-    <h1>Matteo Cederle</h1>
-    <nav>
-      <a href="#about">About me</a>
-      <!--<a href="#research">Research</a>-->
-      <a href="#publications">Research</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- Icon sprite: use with <svg class="icon"><use href="#i-name"/></svg> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.31-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.62-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+    <symbol id="i-scholar" viewBox="0 0 24 24" fill="currentColor"><path d="M5.24 13.77 0 9.5 12 0l12 9.5-5.24 4.27A7.5 7.5 0 0 0 12 9.5a7.5 7.5 0 0 0-6.76 4.27zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></symbol>
+    <symbol id="i-orcid" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zM7.37 4.38a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9zm-.72 3.04h1.44v10.04H6.65V7.42zm3.56 0h3.9c3.71 0 5.34 2.65 5.34 5.02 0 2.58-2.01 5.02-5.32 5.02h-3.92V7.42zm1.44 1.3v7.45h2.3c3.27 0 4.02-2.49 4.02-3.73 0-2.01-1.28-3.72-4.1-3.72h-2.22z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Matteo Cederle, back to top">
+        <span class="brand-mark" aria-hidden="true">MC</span>
+        <span>Matteo Cederle</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch color theme">
+        <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Hi, I’m Matteo Cederle</h2>
-    <p>PhD Student - University of Padova, Italy</p>
-    <p><a href="https://drive.google.com/file/d/19xWOb_vYoodaiVnu7hYb-MEKUHyHsKyR/view?usp=sharing">Curriculum</a></p>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="avatar">
+        <div class="avatar-inner" aria-hidden="true">
+          MC
+          <!-- Put a square photo (≥ 400×400) at assets/img/profile.jpg. Until then the initials are shown. -->
+          <img src="assets/img/profile.jpg" alt="" width="240" height="240" onerror="this.remove()" />
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <h1>Hi, I'm <span class="accent-text">Matteo&nbsp;Cederle</span></h1>
+        <p class="tagline">PhD candidate in Machine Learning &amp; Control · University of Padova</p>
+        <p class="lede">
+          TL;DR: I like working on everything related to reinforcement learning!
+          I first worked on fairness-aware mobility applications, the main topic of my PhD.
+          Along the way I also explored my interests in more methodological areas like mean-field RL and streaming deep RL (more info down below)
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="assets/cv/Cederle_CV.pdf" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Download CV
+          </a>
+          <a class="btn btn-ghost" href="mailto:matteo.cederle@phd.unipd.it">
+            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Email me
+          </a>
+          <div class="socials">
+            <a href="https://scholar.google.com/citations?user=JvR-g-cAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="icon" aria-hidden="true"><use href="#i-scholar"/></svg></a>
+            <a href="https://github.com/mcederle99" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+            <a href="https://www.linkedin.com/in/matteo-cederle" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+            <a href="https://orcid.org/0009-0000-3783-9588" target="_blank" rel="noopener" aria-label="ORCID"><svg class="icon" aria-hidden="true"><use href="#i-orcid"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <main>
+  <main id="main">
+
+    <!-- ===================== ABOUT ===================== -->
     <section id="about">
-      <h2>About me</h2>
-      <p>I am a PhD student at the University of Padova, Department of Information Engineering, where I began my doctoral journey on October 1st, 2023. My research is focused on the title "Machine Learning approaches for sustainable mobility," exploring how intelligent systems can contribute to more sustainable and efficient transportation solutions. I am also an active member of the AMCO (Artificial Intelligence, Machine Learning, and Control) research lab, where I develop a strong interest in Deep Learning and Reinforcement Learning, both in theory and practical applications. From February to July 2025 I have been a visiting researcher in the Automatic Control Laboratory (IfA) at ETH Zürich, where I explored Reinforcement Learning for artificial currency economies.
-        <br> <br>
-        I earned my Master’s Degree in Control Systems Engineering from the University of Padova in 2023, and my Bachelor’s Degree in Information Engineering from the same institution in 2021.
-        <br> <br>
-        Additionally, I have been involved in the Bosch Future Mobility Challenge for two consecutive years — as a team member in 2023 and as a mentor in 2024. In both editions, our team achieved second place, which reflects my commitment to collaborative innovation and sustainable mobility solutions.</p>
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title"><span class="idx">01</span>About me</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              I'm a PhD candidate at the Department of Information Engineering of the University of Padova,
+              where I started my doctorate in October 2023. My thesis, which I will defend in early 2027, mainly looks at how intelligent systems can make transportation fairer,
+              more sustainable and more efficient. I'm part of the <strong>AMCO</strong> lab (Artificial
+              Intelligence, Machine Learning and Control) and work mainly on deep
+              reinforcement learning, on both theory and applications.
+            </p>
+            <p>
+              From February to July 2025 I was a visiting researcher at the Automatic Control Laboratory
+              (IfA) of <strong>ETH Zürich</strong>, working on mean-field reinforcement learning for artificial currency economies.
+            </p>
+            <p>
+              Before the PhD I earned my MSc in Control Systems Engineering (2023) and my BSc in Information
+              Engineering (2021), both at the University of Padova. I also took part in the Bosch Future Mobility Challenge
+              twice: as a team member in 2023 and as a mentor in 2024. Our team placed second both times.
+            </p>
+          </div>
+
+          <aside class="about-side">
+            <div class="card reveal">
+              <p class="label">Education</p>
+              <ul class="edu">
+                <li><strong>PhD, Information Engineering</strong><span>University of Padova · 2023 – present</span></li>
+                <li><strong>MSc, Control Systems Engineering</strong><span>University of Padova · 2023 · 110/110 cum laude</span></li>
+                <li><strong>BSc, Information Engineering</strong><span>University of Padova · 2021 · 110/110 cum laude</span></li>
+              </ul>
+            </div>
+            <div class="card reveal">
+              <p class="label">Awards</p>
+              <ul class="edu">
+                <li><strong>NCCR Automation Fellowship</strong><span>2025 · Research project at ETH Zürich</span></li>
+                <li><strong>2nd place, Bosch Future Mobility Challenge</strong><span>2024 · As team mentor</span></li>
+                <li><strong>2nd place, Bosch Future Mobility Challenge</strong><span>2023 · As team member</span></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
     </section>
 
-    <!--<section id="research">
-      <h2>Research</h2>
-      <ul>
-        <li>Research Area 1 – short description.</li>
-        <li>Research Area 2 – short description.</li>
-        <li>Research Area 3 – short description.</li>
-      </ul>
-    </section>-->
+    <!-- ===================== NEWS ===================== -->
+    <!-- To add news: copy an <li> block, put it at the TOP of the list.
+         When the visible list gets long, move the oldest items into "Show older". -->
+    <section id="news">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title"><span class="idx">02</span>News</h2>
+        </div>
 
+        <ul class="timeline news reveal">
+          <!-- copy this block -->
+          <li>
+            <time datetime="2026-12">Dec 2026</time>
+            <p>Presenting <em>Towards Batch-to-Streaming Deep Reinforcement Learning for Continuous Control</em> at the <strong>NeurIPS 2026</strong> workshop on <em>Reinforcement Learning for Experimental Sciences</em>.</p>
+          </li>
+          <li>
+            <time datetime="2026-09">Sep 2026</time>
+            <p>I'll be teaching assistant for the <strong>Reinforcement Learning</strong> course in the first semester of 2026–27.</p>
+          </li>
+          <li>
+            <time datetime="2026-08">Aug 2026</time>
+            <p>Two papers at the <strong>23rd IFAC World Congress</strong> in Busan: fairness-aware traffic light control, and fully dynamic rebalancing for dockless bike-sharing.</p>
+          </li>
+          <li>
+            <time datetime="2026-08">Aug 2026</time>
+            <p>New preprint with ETH Zürich: <em>Chess on Ice</em>, on tactical decision-making in curling via backward induction and deep RL.</p>
+          </li>
+          <li>
+            <time datetime="2026-07">Jul 2026</time>
+            <p>Paper at the <strong>European Control Conference (ECC 2026)</strong> in Reykjavík: <em>Towards Fair and Efficient allocation of Mobility-on-Demand resources through a Karma Economy</em>.</p>
+          </li>
+          <li>
+            <time datetime="2026-05">May 2026</time>
+            <p>New preprint: <em>Towards Model-Free Learning in Dynamic Population Games: An Application to Karma Economies</em>.</p>
+          </li>
+          <li>
+            <time datetime="2026-03">Mar 2026</time>
+            <p>New preprint: <em>Towards Batch-to-Streaming Deep Reinforcement Learning for Continuous Control</em>.</p>
+          </li>
+        </ul>
+
+        <details class="more reveal">
+          <summary><span class="hide-open">Show older news</span><span class="show-open">Hide older news</span></summary>
+          <ul class="timeline news">
+            <li>
+              <time datetime="2026-02">Feb 2026</time>
+              <p>Gave an invited lecture, <em>Introduction to Reinforcement Learning</em>, at the PhD School in Information Engineering, University of Padova.</p>
+            </li>
+            <li>
+              <time datetime="2025-10">Oct 2025</time>
+              <p>Teaching assistant for <strong>Machine Learning</strong> again this academic year (2025–26).</p>
+            </li>
+            <li>
+              <time datetime="2025-09">Sep 2025</time>
+              <p>Three papers at the first <strong>Joint Conference on Computers, Cognition and Communication (J3C 2025)</strong> in Padova, on fair multi-objective RL for intersections and explainable anomaly detection.</p>
+            </li>
+            <li>
+              <time datetime="2025-07">Jul 2025</time>
+              <p>Wrapped up my research visit at <strong>IfA, ETH Zürich</strong>.</p>
+            </li>
+            <li>
+              <time datetime="2025-07">Jul 2025</time>
+              <p>Paper at the <strong>American Control Conference (ACC 2025)</strong>: <em>A Fairness-Oriented Reinforcement Learning Approach for the Operation and Control of Shared Micromobility Services</em>.</p>
+            </li>
+            <li>
+              <time datetime="2025-06">Jun 2025</time>
+              <p>Paper at <strong>IES 2025</strong> in Brixen: <em>Regulating Spatial Fairness in a Tripartite Micromobility Sharing System via Reinforcement Learning</em>.</p>
+            </li>
+            <li>
+              <time datetime="2025-02">Feb 2025</time>
+              <p>Started a six-month visit at the <strong>Automatic Control Laboratory (IfA), ETH Zürich</strong>, working on RL for artificial currency economies with an <strong>NCCR Automation Fellowship</strong>.</p>
+            </li>
+            <li>
+              <time datetime="2024-10">Oct 2024</time>
+              <p>Paper at <strong>ATT @ ECAI 2024</strong> in Santiago de Compostela: <em>A Distributed Approach to Autonomous Intersection Management via Multi-Agent Reinforcement Learning</em>.</p>
+            </li>
+            <li>
+              <time datetime="2024-10">Oct 2024</time>
+              <p>Started as teaching assistant for <strong>Machine Learning</strong> (2024–25).</p>
+            </li>
+            <li>
+              <time datetime="2024-05">May 2024</time>
+              <p>The team I mentored took <strong>2nd place</strong> at the Bosch Future Mobility Challenge 2024.</p>
+            </li>
+            <li>
+              <time datetime="2023-10">Oct 2023</time>
+              <p>Started my <strong>PhD</strong> at the University of Padova.</p>
+            </li>
+            <li>
+              <time datetime="2023-09">Sep 2023</time>
+              <p>Earned my <strong>MSc in Control Systems Engineering</strong> with a thesis on multi-agent RL for smart mobility.</p>
+            </li>
+            <li>
+              <time datetime="2023-05">May 2023</time>
+              <p>Took <strong>2nd place</strong> at the Bosch Future Mobility Challenge 2023.</p>
+            </li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===================== PUBLICATIONS ===================== -->
+    <!-- To add a paper: copy an <article class="pub"> block and put it at the TOP of the first list.
+         Only the 3 newest papers are shown: move the 3rd one down to the top of its year inside
+         "Show older publications" (add a new year group there if needed).
+         Wrap your name in <span class="me">. A link pill with an empty href="" is hidden automatically. -->
     <section id="publications">
-      <h2>Most Relevant Publications (full list <a href="https://scholar.google.com/citations?user=JvR-g-cAAAAJ&hl=it&oi=ao">here</a>)</h2>
-      <ul>
-        <li><strong>Fair and Efficient allocation of Mobility-on-Demand resources through a Karma Economy</strong> – European Control Conference, 2026.</li>
-        <li><strong>A Fairness-Oriented Multi-Objective Reinforcement Learning approach for Autonomous Intersection Management</strong> – IFAC Joint Conference on Computers, Cognition and Communication, 2025.</li>
-        <li><strong>A Fairness-Oriented Reinforcement Learning approach for the Operation and Control of Shared Micromobility Services</strong> – American Control Conference, 2025.</li>
-        <li><strong>A Distributed approach to Autonomous Intersection Management via Multi-Agent Reinforcement Learning</strong> – Agents in Traffic and Transportations @ European Conference on Artificial Intelligence, 2024.</li>
-      </ul>
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title"><span class="idx">03</span>Publications</h2>
+          <a class="section-link" href="https://scholar.google.com/citations?user=JvR-g-cAAAAJ" target="_blank" rel="noopener">
+            Google Scholar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+
+        <div class="pubs">
+            <!-- copy this block -->
+            <article class="pub card card-hover reveal">
+              <div>
+                <div class="pub-meta"><span class="badge">NeurIPS 2026</span> <span class="badge badge-muted">Workshop</span></div>
+                <h4>Towards Batch-to-Streaming Deep Reinforcement Learning for Continuous Control</h4>
+                <p class="authors">Riccardo De Monte, <span class="me">Matteo Cederle</span>, Gian Antonio Susto</p>
+                <p class="venue">Reinforcement Learning for Experimental Sciences Workshop @ NeurIPS 2026</p>
+                <div class="pub-links">
+                  <a class="pill" href="https://arxiv.org/abs/2603.08588" target="_blank" rel="noopener">arXiv</a>
+                  <a class="pill" href="https://github.com/mcederle99/batch2streamDRL" target="_blank" rel="noopener">Code</a>
+                  <details class="bibtex">
+                    <summary class="pill">BibTeX</summary>
+                    <div class="bibtex-body">
+                      <pre><code>@inproceedings{demonte2026batch,
+  title     = {Towards Batch-to-Streaming Deep Reinforcement Learning for Continuous Control},
+  author    = {De Monte, Riccardo and Cederle, Matteo and Susto, Gian Antonio},
+  booktitle = {Reinforcement Learning for Experimental Sciences Workshop, co-located with NeurIPS 2026},
+  year      = {2026}
+}</code></pre>
+                      <button class="pill copy-btn" type="button">Copy</button>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </article>
+            <article class="pub card card-hover reveal">
+              <!-- Optional thumbnail: add an image to assets/img/pubs/ and uncomment
+              <div class="pub-thumb"><img src="assets/img/pubs/example.png" alt="" loading="lazy" /></div>
+              -->
+              <div>
+                <div class="pub-meta"><span class="badge">Preprint</span></div>
+                <h4>Chess on Ice: Curling Tactical Decision-Making via Backward Induction and Deep Reinforcement Learning</h4>
+                <p class="authors">Patrick Oberlin, <span class="me">Matteo Cederle</span>, Aren Karapetyan, Saverio Bolognani, Gian Antonio Susto, Florian Dörfler</p>
+                <p class="venue">arXiv preprint arXiv:2608.02379, 2026</p>
+                <div class="pub-links">
+                  <a class="pill" href="https://arxiv.org/abs/2608.02379" target="_blank" rel="noopener">arXiv</a>
+                  <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                  <details class="bibtex">
+                    <summary class="pill">BibTeX</summary>
+                    <div class="bibtex-body">
+                      <pre><code>@misc{oberlin2026chess,
+  title         = {Chess on Ice: Curling Tactical Decision-Making via Backward Induction and Deep Reinforcement Learning},
+  author        = {Oberlin, Patrick and Cederle, Matteo and Karapetyan, Aren and Bolognani, Saverio and Susto, Gian Antonio and D{\"o}rfler, Florian},
+  year          = {2026},
+  eprint        = {2608.02379},
+  archivePrefix = {arXiv}
+}</code></pre>
+                      <button class="pill copy-btn" type="button">Copy</button>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </article>
+            <article class="pub card card-hover reveal">
+              <div>
+                <div class="pub-meta"><span class="badge">IFAC WC 2026</span> <span class="badge badge-muted">Conference</span></div>
+                <h4>Fully Dynamic Rebalancing in Dockless Bike-Sharing Systems via Deep Reinforcement Learning</h4>
+                <p class="authors">Edoardo Scarpel, Alberto Pettena, <span class="me">Matteo Cederle</span>, Federico Chiariotti, Marco Fabris, Gian Antonio Susto</p>
+                <p class="venue">23rd IFAC World Congress, Busan, South Korea, 2026</p>
+                <div class="pub-links">
+                  <a class="pill" href="https://arxiv.org/abs/2605.14501" target="_blank" rel="noopener">arXiv</a>
+                  <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                  <details class="bibtex">
+                    <summary class="pill">BibTeX</summary>
+                    <div class="bibtex-body">
+                      <pre><code>@inproceedings{scarpel2026fully,
+  title         = {Fully Dynamic Rebalancing in Dockless Bike-Sharing Systems via Deep Reinforcement Learning},
+  author        = {Scarpel, Edoardo and Pettena, Alberto and Cederle, Matteo and Chiariotti, Federico and Fabris, Marco and Susto, Gian Antonio},
+  booktitle     = {23rd IFAC World Congress},
+  year          = {2026},
+  eprint        = {2605.14501},
+  archivePrefix = {arXiv}
+}</code></pre>
+                      <button class="pill copy-btn" type="button">Copy</button>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </article>
+            <article class="pub card card-hover reveal">
+              <div>
+                <div class="pub-meta"><span class="badge">IFAC WC 2026</span> <span class="badge badge-muted">Conference</span></div>
+                <h4>Balancing Efficiency and Fairness in Traffic Light Control through Deep Reinforcement Learning</h4>
+                <p class="authors"><span class="me">Matteo Cederle</span>, Giacomo Scatto, Gian Antonio Susto</p>
+                <p class="venue">23rd IFAC World Congress, Busan, South Korea, 2026</p>
+                <div class="pub-links">
+                  <a class="pill" href="https://arxiv.org/abs/2605.10170" target="_blank" rel="noopener">arXiv</a>
+                  <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                  <details class="bibtex">
+                    <summary class="pill">BibTeX</summary>
+                    <div class="bibtex-body">
+                      <pre><code>@inproceedings{cederle2026balancing,
+  title         = {Balancing Efficiency and Fairness in Traffic Light Control through Deep Reinforcement Learning},
+  author        = {Cederle, Matteo and Scatto, Giacomo and Susto, Gian Antonio},
+  booktitle     = {23rd IFAC World Congress},
+  year          = {2026},
+  eprint        = {2605.10170},
+  archivePrefix = {arXiv}
+}</code></pre>
+                      <button class="pill copy-btn" type="button">Copy</button>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </article>
+        </div>
+
+        <details class="more">
+          <summary><span class="hide-open">Show older publications</span><span class="show-open">Hide older publications</span></summary>
+          <div class="pub-group">
+            <h3 class="pub-year">2026</h3>
+            <div class="pubs">
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">Preprint</span></div>
+                  <h4>Towards Model-Free Learning in Dynamic Population Games: An Application to Karma Economies</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span>, Saverio Bolognani, Gian Antonio Susto</p>
+                  <p class="venue">arXiv preprint arXiv:2605.11042, 2026</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://arxiv.org/abs/2605.11042" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@misc{cederle2026modelfree,
+    title         = {Towards Model-Free Learning in Dynamic Population Games: An Application to Karma Economies},
+    author        = {Cederle, Matteo and Bolognani, Saverio and Susto, Gian Antonio},
+    year          = {2026},
+    eprint        = {2605.11042},
+    archivePrefix = {arXiv}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">ECC 2026</span> <span class="badge badge-muted">Conference</span></div>
+                  <h4>Towards Fair and Efficient allocation of Mobility-on-Demand resources through a Karma Economy</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span>, Saverio Bolognani, Gian Antonio Susto</p>
+                  <p class="venue">European Control Conference (ECC), Reykjavík, Iceland, 2026</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://ieeexplore.ieee.org/abstract/document/11625221/" target="_blank" rel="noopener">Paper</a>
+                    <a class="pill" href="https://arxiv.org/abs/2511.07225" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="https://github.com/mcederle99/MoD-Karma" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@inproceedings{cederle2026karma,
+    title     = {Towards Fair and Efficient allocation of Mobility-on-Demand resources through a Karma Economy},
+    author    = {Cederle, Matteo and Bolognani, Saverio and Susto, Gian Antonio},
+    booktitle = {2026 European Control Conference (ECC)},
+    publisher = {IEEE},
+    year      = {2026}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="pub-group">
+            <h3 class="pub-year">2025</h3>
+            <div class="pubs">
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">J3C 2025</span> <span class="badge badge-muted">Conference</span></div>
+                  <h4>A Fairness-Oriented Multi-Objective Reinforcement Learning approach for Autonomous Intersection Management</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span>, Marco Fabris, Gian Antonio Susto</p>
+                  <p class="venue">Joint Conference on Computers, Cognition and Communication (J3C), Padova, 2025 · IFAC-PapersOnLine 59(26), pp. 157–162</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://www.sciencedirect.com/science/article/pii/S240589632502703X" target="_blank" rel="noopener">Paper</a>
+                    <a class="pill" href="https://arxiv.org/abs/2507.09311" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="https://github.com/mcederle99/FairMORL-AIM" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@article{cederle2025morl,
+    title     = {A Fairness-Oriented Multi-Objective Reinforcement Learning approach for Autonomous Intersection Management},
+    author    = {Cederle, Matteo and Fabris, Marco and Susto, Gian Antonio},
+    journal   = {IFAC-PapersOnLine},
+    volume    = {59},
+    number    = {26},
+    pages     = {157--162},
+    publisher = {Elsevier},
+    year      = {2025}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">J3C 2025</span> <span class="badge badge-muted">Conference</span></div>
+                  <h4>Explainable Anomaly Detection for Electric Vehicles Charging Stations</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span>, Andrea Mazzucco, Andrea Demartini, Eugenio Mazza, Eugenia Suriani, Federico Vitti, Gian Antonio Susto</p>
+                  <p class="venue">Joint Conference on Computers, Cognition and Communication (J3C), Padova, 2025 · IFAC-PapersOnLine 59(26), pp. 301–304</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://www.sciencedirect.com/science/article/pii/S2405896325027272" target="_blank" rel="noopener">Paper</a>
+                    <a class="pill" href="https://arxiv.org/abs/2507.15718" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@article{cederle2025explainable,
+    title     = {Explainable Anomaly Detection for Electric Vehicles Charging Stations},
+    author    = {Cederle, Matteo and Mazzucco, Andrea and Demartini, Andrea and Mazza, Eugenio and Suriani, Eugenia and Vitti, Federico and Susto, Gian Antonio},
+    journal   = {IFAC-PapersOnLine},
+    volume    = {59},
+    number    = {26},
+    pages     = {301--304},
+    publisher = {Elsevier},
+    year      = {2025}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">J3C 2025</span> <span class="badge badge-muted">Conference</span></div>
+                  <h4>Towards Explainable Anomaly Detection in Shared Mobility Systems</h4>
+                  <p class="authors">Elnur Isgandarov, <span class="me">Matteo Cederle</span>, Federico Chiariotti, Gian Antonio Susto</p>
+                  <p class="venue">Joint Conference on Computers, Cognition and Communication (J3C), Padova, 2025 · IFAC-PapersOnLine 59(26), pp. 241–246</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://www.sciencedirect.com/science/article/pii/S240589632502717X" target="_blank" rel="noopener">Paper</a>
+                    <a class="pill" href="https://arxiv.org/abs/2507.15643" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@article{isgandarov2025towards,
+    title     = {Towards Explainable Anomaly Detection in Shared Mobility Systems},
+    author    = {Isgandarov, Elnur and Cederle, Matteo and Chiariotti, Federico and Susto, Gian Antonio},
+    journal   = {IFAC-PapersOnLine},
+    volume    = {59},
+    number    = {26},
+    pages     = {241--246},
+    publisher = {Elsevier},
+    year      = {2025}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">ACC 2025</span> <span class="badge badge-muted">Conference</span></div>
+                  <h4>A Fairness-Oriented Reinforcement Learning Approach for the Operation and Control of Shared Micromobility Services</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span>, Luca Vittorio Piron, Marina Ceccon, Federico Chiariotti, Alessandro Fabris, Marco Fabris, Gian Antonio Susto</p>
+                  <p class="venue">American Control Conference (ACC), 2025, pp. 565–570</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://ieeexplore.ieee.org/abstract/document/11107820/" target="_blank" rel="noopener">Paper</a>
+                    <a class="pill" href="https://arxiv.org/abs/2403.15780" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="https://github.com/mcederle99/FairMSS" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@inproceedings{cederle2025fairmss,
+    title     = {A Fairness-Oriented Reinforcement Learning Approach for the Operation and Control of Shared Micromobility Services},
+    author    = {Cederle, Matteo and Piron, Luca Vittorio and Ceccon, Marina and Chiariotti, Federico and Fabris, Alessandro and Fabris, Marco and Susto, Gian Antonio},
+    booktitle = {2025 American Control Conference (ACC)},
+    pages     = {565--570},
+    publisher = {IEEE},
+    year      = {2025}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">IES 2025</span> <span class="badge badge-muted">Conference</span></div>
+                  <h4>Regulating Spatial Fairness in a Tripartite Micromobility Sharing System via Reinforcement Learning</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span>, Marco Fabris, Gian Antonio Susto</p>
+                  <p class="venue">IES 2025 – Innovation &amp; Society: Statistics and Data Science for Evaluation and Quality, Brixen, 2025, pp. 1089–1096</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://ies2025.sis-statistica.it/book-of-short-paper/" target="_blank" rel="noopener">Paper</a>
+                    <a class="pill" href="https://arxiv.org/abs/2504.02597" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@inproceedings{cederle2025regulating,
+    title     = {Regulating Spatial Fairness in a Tripartite Micromobility Sharing System via Reinforcement Learning},
+    author    = {Cederle, Matteo and Fabris, Marco and Susto, Gian Antonio},
+    booktitle = {IES 2025 -- Innovation \&amp; Society: Statistics and Data Science for Evaluation and Quality},
+    pages     = {1089--1096},
+    year      = {2025}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="pub-group">
+            <h3 class="pub-year">2024</h3>
+            <div class="pubs">
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">ATT @ ECAI 2024</span> <span class="badge badge-muted">Workshop</span></div>
+                  <h4>A Distributed Approach to Autonomous Intersection Management via Multi-Agent Reinforcement Learning</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span>, Marco Fabris, Gian Antonio Susto</p>
+                  <p class="venue">Agents in Traffic and Transportation (ATT) @ ECAI 2024, Santiago de Compostela · CEUR-WS Vol. 3813, pp. 1–15</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://ceur-ws.org/Vol-3813/1.pdf" target="_blank" rel="noopener">Paper</a>
+                    <a class="pill" href="https://arxiv.org/abs/2405.08655" target="_blank" rel="noopener">arXiv</a>
+                    <a class="pill" href="https://github.com/mcederle99/MAD4QN-PS" target="_blank" rel="noopener">Code</a>
+                    <details class="bibtex">
+                      <summary class="pill">BibTeX</summary>
+                      <div class="bibtex-body">
+                        <pre><code>@inproceedings{cederle2024distributed,
+    title     = {A Distributed Approach to Autonomous Intersection Management via Multi-Agent Reinforcement Learning},
+    author    = {Cederle, Matteo and Fabris, Marco and Susto, Gian Antonio},
+    booktitle = {Agents in Traffic and Transportation (ATT 2024), co-located with ECAI 2024},
+    series    = {CEUR Workshop Proceedings},
+    volume    = {3813},
+    pages     = {1--15},
+    year      = {2024}
+  }</code></pre>
+                        <button class="pill copy-btn" type="button">Copy</button>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="pub-group">
+            <h3 class="pub-year">2023</h3>
+            <div class="pubs">
+              <article class="pub card card-hover">
+                <div>
+                  <div class="pub-meta"><span class="badge">MSc Thesis</span> <span class="badge badge-muted">Thesis</span></div>
+                  <h4>Multi Agent Reinforcement Learning for smart mobility and traffic scenarios</h4>
+                  <p class="authors"><span class="me">Matteo Cederle</span></p>
+                  <p class="venue">MSc thesis in Control Systems Engineering, University of Padova, 2023</p>
+                  <div class="pub-links">
+                    <a class="pill" href="https://thesis.unipd.it/retrieve/4b937967-3532-4408-866c-3d0fb9434081/Cederle_Matteo.pdf" target="_blank" rel="noopener">PDF</a>
+                    <a class="pill" href="" target="_blank" rel="noopener">Code</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </details>
+      </div>
     </section>
 
+    <!-- ===================== PROJECTS & EXPERIENCE ===================== -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title"><span class="idx">04</span>Projects &amp; Experience</h2>
+        </div>
+
+        <div class="projects">
+          <!-- copy this block -->
+          <article class="project card card-hover reveal">
+            <p class="when">Feb – Jul 2025 · <span class="badge">NCCR Automation Fellow</span></p>
+            <h3>Visiting Researcher</h3>
+            <p class="org">Automatic Control Laboratory (IfA), ETH Zürich</p>
+            <p class="desc">
+              Six-month research visit working on reinforcement learning for artificial currency economies,
+              where users earn and spend a non-tradable "karma" currency to access shared resources.
+            </p>
+            <ul class="chips">
+              <li class="chip">Reinforcement learning</li>
+              <li class="chip">Artificial currencies</li>
+            </ul>
+          </article>
+
+          <article class="project card card-hover reveal">
+            <p class="when">2023 &amp; 2024 · <span class="badge">2nd place ×2</span></p>
+            <h3>Bosch Future Mobility Challenge</h3>
+            <p class="org">Bosch Engineering Center Cluj</p>
+            <p class="desc">
+              An international competition where student teams build autonomous driving software for
+              1:10-scale cars in a miniature smart city. I competed as a team member in 2023 and came back
+              as a mentor in 2024. We placed second both times.
+            </p>
+            <ul class="chips">
+              <li class="chip">Autonomous driving</li>
+              <li class="chip">Robotics</li>
+              <li class="chip">Mentoring</li>
+            </ul>
+          </article>
+
+          <article class="project project-wide card card-hover reveal">
+            <p class="when">Open source</p>
+            <h3>Code on GitHub</h3>
+            <p class="org">github.com/mcederle99</p>
+            <p class="desc">Code to reproduce my papers:</p>
+            <ul class="repo-list">
+              <li><a href="https://github.com/mcederle99/batch2streamDRL" target="_blank" rel="noopener">batch2streamDRL</a><span>Batch-to-streaming deep RL for continuous control · NeurIPS 2026 Workshop</span></li>
+              <li><a href="https://github.com/mcederle99/MoD-Karma" target="_blank" rel="noopener">MoD-Karma</a><span>Karma economy for mobility-on-demand · ECC 2026</span></li>
+              <li><a href="https://github.com/mcederle99/FairMORL-AIM" target="_blank" rel="noopener">FairMORL-AIM</a><span>Fair multi-objective RL for intersections · J3C 2025</span></li>
+              <li><a href="https://github.com/mcederle99/FairMSS" target="_blank" rel="noopener">FairMSS</a><span>Fair RL for shared micromobility · ACC 2025</span></li>
+              <li><a href="https://github.com/mcederle99/MAD4QN-PS" target="_blank" rel="noopener">MAD4QN-PS</a><span>Multi-agent RL for intersection management · ATT 2024</span></li>
+            </ul>
+            <div class="pub-links">
+              <a class="pill" href="https://github.com/mcederle99" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> All repositories
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TEACHING ===================== -->
     <section id="teaching">
-      <h2>Teaching</h2>
-      <ul>
-        <li>Invited Lecturer for Elements of Deep Learning. Delivered a 2-hour guest lecture titled "Introduction to Reinforcement Learning", PhD School on Information Engineering, Department of Information Engineering, University of Padova.</li>
-        <li>Machine Learning – Teaching Assistant, I Semester, A.A. 2025-2026.</li>
-        <li>Machine Learning – Teaching Assistant, I Semester, A.A. 2024-2025.</li>
-        <!--<li>Course Name – Instructor, Semester.</li>-->
-      </ul>
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title"><span class="idx">05</span>Teaching</h2>
+        </div>
+
+        <ul class="timeline reveal">
+          <!-- copy this block -->
+          <li>
+            <span class="when">A.Y. 2026–27 · Upcoming</span>
+            <p><strong>Teaching Assistant: Reinforcement Learning</strong></p>
+            <p class="sub">First semester · University of Padova</p>
+          </li>
+          <li>
+            <span class="when">Feb 2026 · Invited lecture</span>
+            <p><strong>"Introduction to Reinforcement Learning"</strong></p>
+            <p class="sub">2-hour guest lecture in <em>Elements of Deep Learning</em> · PhD School in Information Engineering, University of Padova</p>
+          </li>
+          <li>
+            <span class="when">A.Y. 2025–26</span>
+            <p><strong>Teaching Assistant: Machine Learning</strong></p>
+            <p class="sub">First semester · University of Padova</p>
+          </li>
+          <li>
+            <span class="when">A.Y. 2024–25</span>
+            <p><strong>Teaching Assistant: Machine Learning</strong></p>
+            <p class="sub">First semester · University of Padova</p>
+          </li>
+        </ul>
+      </div>
     </section>
 
+    <!-- ===================== CONTACT ===================== -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:matteo.cederle@phd.unipd.it">matteo.cederle@phd.unipd.it</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/matteo-cederle?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BS4XxZtZoTdyi0V8t%2FsUtvw%3D%3D">Matteo Cederle</a></p>
-      <p>GitHub: <a href="https://github.com/mcederle99">mcederle99</a></p>
-      <p>Google Scholar: <a href="https://scholar.google.com/citations?user=JvR-g-cAAAAJ&hl=it&oi=ao">Matteo Cederle</a></p>
+      <div class="container">
+        <div class="contact-card reveal">
+          <h2>Get in touch!</h2>
+          <a class="email" href="mailto:matteo.cederle@phd.unipd.it">matteo.cederle@phd.unipd.it</a>
+          <div class="socials">
+            <a href="https://scholar.google.com/citations?user=JvR-g-cAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="icon" aria-hidden="true"><use href="#i-scholar"/></svg></a>
+            <a href="https://github.com/mcederle99" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+            <a href="https://www.linkedin.com/in/matteo-cederle" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+            <a href="https://orcid.org/0009-0000-3783-9588" target="_blank" rel="noopener" aria-label="ORCID"><svg class="icon" aria-hidden="true"><use href="#i-orcid"/></svg></a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© <script>document.write(new Date().getFullYear())</script> Matteo Cederle. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Matteo Cederle</p>
+      <p>Last updated: September 2026 · <a href="#top">Back to top ↑</a></p>
+    </div>
   </footer>
 </body>
 </html>
